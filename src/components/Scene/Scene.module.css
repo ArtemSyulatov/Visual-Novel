@@ -1,0 +1,13 @@
+.backGround{
+    background-image: url('../../../public/ff7283d84206f14b5ad46fd2ab0168a3.jpeg');
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+}
+.dialogWindow{
+    display: flex;
+    align-items: center;
+}
