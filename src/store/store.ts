@@ -24,11 +24,11 @@ type Link = {
 const testObj: Obj = {
     1: {
         dialogs: [{
-            text: 'dialog1'
+            text: 'Начало первой сцены. Первый диалог'
         }, {
-            text: 'dialog2'
+            text: 'Второй диалог'
         }, {
-            text: 'dialog3'
+            text: 'Третий диалог'
         }],
         backgroundImg: '/src/img',
         music: './music',
@@ -43,11 +43,11 @@ const testObj: Obj = {
     },
     2: {
         dialogs: [{
-            text: 'dialog1'
+            text: 'Начало второй сцены. Четвертый диалог'
         }, {
-            text: 'dialog2'
+            text: 'Пятый диалог'
         }, {
-            text: 'dialog3'
+            text: 'Шестой диалог'
         }],
         backgroundImg: '/src/img',
         music: './music',
@@ -62,12 +62,25 @@ const testObj: Obj = {
     },
     3: {
         dialogs: [{
-            text: 'dialog1'
+            text: 'Начало третьей сцены. Седьмой диалог'
         }, {
-            text: 'dialog2'
+            text: 'Восьмой диалог'
         }, {
-            text: 'dialog3'
+            text: 'Девятый диалог.Конец'
         }],
+        backgroundImg: '/src/img',
+        music: './music',
+        link: [{
+            text: 'qasdf',
+            choose: 2
+        }, {
+            text: 'qasdf',
+            choose: 2
+        },
+        ]
+    },
+    4:{
+        dialogs: [],
         backgroundImg: '/src/img',
         music: './music',
         link: [{

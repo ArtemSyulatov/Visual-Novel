@@ -1,13 +1,18 @@
 .backGround{
-    background-image: url('../../../public/ff7283d84206f14b5ad46fd2ab0168a3.jpeg');
-    width: 100vw;
-    height: 100vh;
+    height: 90vh;
     display: flex;
-    align-items: flex-end;
     justify-content: center;
+    align-items: flex-end;
 
 }
 .dialogWindow{
     display: flex;
     align-items: center;
+}
+.mainMenuBtn{
+
+}
+.container{
+    background-image: url('../../../public/ff7283d84206f14b5ad46fd2ab0168a3.jpeg');
+    height: 100vh;
 }

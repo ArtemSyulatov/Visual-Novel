@@ -1,15 +1,14 @@
 import classes from './Dialog.module.css'
-import {useStore} from "../../store/store";
 
+interface DialogProps {
+    dialog:string
+}
 
-export const Dialog = () => {
-    const {store} = useStore()
-    const test = store.state[1].dialogs.map((e) => <div>{e.text}</div>)
-    console.log(store.state[1])
+export const Dialog = ({dialog}:DialogProps) => {
     return (
         <div className={classes.dialogContainer}>
             <p>
-                Dialog:{test[0]}
+                Dialog: {dialog}
             </p>
         </div>
     );
