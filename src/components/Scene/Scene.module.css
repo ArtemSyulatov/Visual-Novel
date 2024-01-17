@@ -1,0 +1,18 @@
+.backGround{
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+}
+.dialogWindow{
+    display: flex;
+    align-items: center;
+}
+.mainMenuBtn{
+
+}
+.container{
+    background-image: url('../../../public/ff7283d84206f14b5ad46fd2ab0168a3.jpeg');
+    height: 100vh;
+}
