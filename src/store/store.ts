@@ -1,108 +1,112 @@
-import {MobXProviderContext} from "mobx-react";
-import {makeAutoObservable} from "mobx";
-import {useContext} from "react";
+import { MobXProviderContext } from "mobx-react";
+import { makeAutoObservable, toJS } from "mobx";
+import { useContext } from "react";
+import { Config } from "../components/types/types";
+import { SceneState } from "./SceneState";
 
-
-type Dialog = {
-    text: string
-}
-
-type Obj = {
-    [key: number]: {
-        dialogs: Dialog[],
-        backgroundImg: string,
-        music: string
-        link: Link[]
-    }
-}
-
-type Link = {
-    text: string,
-    choose: number
-}
-
-const testObj: Obj = {
-    1: {
-        dialogs: [{
-            text: 'Начало первой сцены. Первый диалог'
-        }, {
-            text: 'Второй диалог'
-        }, {
-            text: 'Третий диалог'
-        }],
-        backgroundImg: '/src/img',
-        music: './music',
-        link: [{
-            text: 'qasdf',
-            choose: 2
-        }, {
-            text: 'qasdf',
-            choose: 2
+export const config: Config = {
+  scenes: [
+    {
+      id: 1,
+      dialogs: [
+        {
+          text: "Начало первой сцены. Первый диалог",
         },
-        ]
+        {
+          text: "Второй диалог",
+        },
+        {
+          text: "Третий диалог",
+        },
+      ],
+      backgroundImg: "/src/img",
+      music: "./music",
+      link: [
+        {
+          text: "qasdf",
+          choose: 2,
+        },
+        {
+          text: "qasdf",
+          choose: 2,
+        },
+      ],
     },
-    2: {
-        dialogs: [{
-            text: 'Начало второй сцены. Четвертый диалог'
-        }, {
-            text: 'Пятый диалог'
-        }, {
-            text: 'Шестой диалог'
-        }],
-        backgroundImg: '/src/img',
-        music: './music',
-        link: [{
-            text: 'qasdf',
-            choose: 2
-        }, {
-            text: 'qasdf',
-            choose: 2
+    {
+      id: 2,
+      dialogs: [
+        {
+          text: "Начало второй сцены. Четвертый диалог",
         },
-        ]
+        {
+          text: "Пятый диалог",
+        },
+        {
+          text: "Шестой диалог",
+        },
+      ],
+      backgroundImg: "/src/img",
+      music: "./music",
+      link: [
+        {
+          text: "qasdf",
+          choose: 2,
+        },
+        {
+          text: "qasdf",
+          choose: 2,
+        },
+      ],
     },
-    3: {
-        dialogs: [{
-            text: 'Начало третьей сцены. Седьмой диалог'
-        }, {
-            text: 'Восьмой диалог'
-        }, {
-            text: 'Девятый диалог.Конец'
-        }],
-        backgroundImg: '/src/img',
-        music: './music',
-        link: [{
-            text: 'qasdf',
-            choose: 2
-        }, {
-            text: 'qasdf',
-            choose: 2
+    {
+      id: 3,
+      dialogs: [
+        {
+          text: "Начало третьей сцены. Седьмой диалог",
         },
-        ]
+        {
+          text: "Восьмой диалог",
+        },
+        {
+          text: "Девятый диалог.Конец",
+        },
+      ],
+      backgroundImg: "/src/img",
+      music: "./music",
+      link: [
+        {
+          text: "qasdf",
+          choose: 2,
+        },
+        {
+          text: "qasdf",
+          choose: 2,
+        },
+      ],
     },
-    4:{
-        dialogs: [],
-        backgroundImg: '/src/img',
-        music: './music',
-        link: [{
-            text: 'qasdf',
-            choose: 2
-        }, {
-            text: 'qasdf',
-            choose: 2
-        },
-        ]
-    }
-}
-
+  ],
+};
 
 export class Store {
-    private state: Obj;
-    constructor() {
-        this.state = testObj
-        makeAutoObservable(this)
-    }
+  currentSceneKey: number = 1;
+  scenes: Map<number | string, SceneState> = new Map();
+  get currentScene() {
+    return this.scenes.get(this.currentSceneKey);
+  }
+  constructor(config: Config) {
+    config.scenes.forEach((scene) =>
+      this.scenes.set(scene.id, new SceneState(this, scene))
+    );
+    makeAutoObservable(this);
+  }
+  nextScene = () => {
+    console.log("nextscene");
+    this.currentSceneKey += 1;
+    return this.currentScene
+  };
 }
 
-const store = new Store();
+const store = new Store(config);
+console.log(toJS(store));
 export const useStore = () => useContext(MobXProviderContext);
 export default store;
